@@ -4,14 +4,12 @@ import List from "./List";
 import Form from "./Form";
 
 class Contacts extends Component {
-    state = {
 
-    };
 
     render() {
         return (
             <div>
-                <List/>
+                <List contacts={this.props.contacts}/>
                 <Form/>
             </div>
         );

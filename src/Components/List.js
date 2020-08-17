@@ -1,31 +1,27 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './List.css';
 
 class List extends Component {
-    state = {
+    static propTypes = {
+        contacts: PropTypes.array.isRequired
+    };
 
-    }
 
     render() {
         return (
             <div className={"listArea"}>
                 <input name={"filter"} id={"filter"} placeholder={"Filter by name or phone"}/>
                 <ul className={"list"}>
-                    <li>
-                        <span className={"name"}>Mehmet Seven</span>
-                        <span className={"phone"}>05078884445</span>
-                        <span className={"clearfix"}></span>
-                    </li>
-                    <li>
-                        <span className={"name"}>Ahmet Yıldırım</span>
-                        <span className={"phone"}>111111111111</span>
-                        <span className={"clearfix"}></span>
-                    </li>
-                    <li>
-                        <span className={"name"}>Ayşe Seven</span>
-                        <span className={"phone"}>222222222222</span>
-                        <span className={"clearfix"}></span>
-                    </li>
+                    {
+                        this.props.contacts.map(contact => 
+                                <li key={contact.phone}>
+                                    <span className={"name"}>{contact.name}</span>
+                                    <span className={"phone"}>{contact.phone}</span>
+                                    <span className={"clearfix"}></span>
+                                </li>
+                        )
+                    }
                 </ul>
             </div>
         );
